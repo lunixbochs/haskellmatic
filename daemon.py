@@ -94,7 +94,9 @@ class Daemon:
             return response
         return []
 
-def get_daemon(root, cmd):
+def get_daemon(filename, cmd, sentinel='*.cabal'):
+    root = find_sentinel(filename, sentinel)
+    root = root or os.path.dirname(filename)
     daemon = daemons.get(root)
     if daemon and daemon.ok():
         return daemon
