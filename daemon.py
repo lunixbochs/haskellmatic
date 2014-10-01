@@ -92,6 +92,7 @@ class Daemon:
 
         if self.running:
             response = self.send('check {}'.format(f.name))
+            response = [line for line in response if line.startswith(f.name)]
             return response
         return []
 
