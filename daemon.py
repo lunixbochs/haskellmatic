@@ -78,6 +78,7 @@ class Daemon:
             response = self.send('.')
             if response and response[-1] == 'OK':
                 return True
+            self.proc.kill()
         return False
 
     def check(self, filename, code):
